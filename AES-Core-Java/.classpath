@@ -10,9 +10,8 @@
 	<classpathentry kind="lib" path="lib/jaxen-1.1.4.jar"/>
 	<classpathentry kind="lib" path="lib/jcommander-1.35.jar"/>
 	<classpathentry kind="lib" path="lib/pmd-core-5.3.4.jar" sourcepath="C:/Users/SHAGUL/.m2/repository/net/sourceforge/pmd/pmd-core/5.3.4/pmd-core-5.3.4-sources.jar"/>
-	<classpathentry kind="lib" path="lib/pmd-java-5.3.4.jar"/>
+	<classpathentry kind="lib" path="lib/pmd-java-5.3.4.jar" sourcepath="C:/Users/SHAGUL/.m2/repository/net/sourceforge/pmd/pmd-java/5.3.4/pmd-java-5.3.4-sources.jar"/>
 	<classpathentry kind="lib" path="lib/pmd-javascript-5.3.4.jar"/>
-	<classpathentry kind="lib" path="lib/pmd-jsp-5.3.4.jar"/>
 	<classpathentry kind="lib" path="lib/pmd-plsql-5.3.4.jar"/>
 	<classpathentry kind="lib" path="lib/pmd-vm-5.3.4.jar"/>
 	<classpathentry kind="lib" path="lib/pmd-xml-5.3.4.jar"/>

@@ -1,4 +1,4 @@
-package org.aes.core.java.test;
+package org.aes.core.java.test.data;
 
 import java.io.FileReader;
 import java.sql.Connection;
