@@ -47,3 +47,4 @@ RemoteSystemsTempFiles
 Servers
 bin
 build
+*.prefs
