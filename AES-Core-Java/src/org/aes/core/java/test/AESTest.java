@@ -18,8 +18,8 @@ import net.sourceforge.pmd.RuleSetFactory;
 
 public class AESTest {
 	
-	public static String filePath="F://Java//JavaLab//AES//Codebase//AES-Core-Java//src//org//aes//core//java//test//data//sample2.jsp";
-	public static String rulesetPath = "F://Java//JavaLab//AES//Codebase//AES-Core-Java//src//resources//scanner-ruleset.xml";
+	public static String filePath="D://DART//Lab//Projects//EL//AESSource//AES-Core-Java//src//org//aes//core//java//test//data//sample2.jsp";
+	public static String rulesetPath = "D://DART//Lab//Projects//EL//AESSource//AES-Core-Java//src//resources//scanner-ruleset.xml";
 	
 	public static void main(String as[]){
 		
