@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aesConfig>
+	<sourceFilePath>D:\CASWeb\src\com\metlife\middleware\service</sourceFilePath>
+	<scannerRulesPath>//scanner-ruleset.xml</scannerRulesPath>
+	<multiThreadEnabled>true</multiThreadEnabled>
+	<ignoreFileExts>
+		<ext>class</ext>
+		<ext>js</ext>
+	</ignoreFileExts>
+</aesConfig>

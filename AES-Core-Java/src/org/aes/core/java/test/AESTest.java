@@ -19,20 +19,23 @@ import net.sourceforge.pmd.RuleSetFactory;
 public class AESTest {
 	
 	public static String filePath="D://DART//Lab//Projects//EL//AESSource//AES-Core-Java//src//org//aes//core//java//test//data//sample2.jsp";
-	public static String rulesetPath = "D://DART//Lab//Projects//EL//AESSource//AES-Core-Java//src//resources//scanner-ruleset.xml";
+	public static String rulesetPath = "//scanner-ruleset.xml";
 	
 	public static void main(String as[]){
 		
 		
 		try{
 			File file = new File(filePath);
-			RuleSet rules = new RuleSetFactory().createRuleSet(rulesetPath);
+			String path = AESTest.class.getProtectionDomain().getCodeSource().getLocation().getFile();
+			System.out.println(path);
+			RuleSet rules = new RuleSetFactory().createRuleSet(path + rulesetPath);
 			
 			JavaApplicationModel model = new JavaApplicationModel();
 			AESJavaScanner scanner = new AESJavaScanner();
 	        Report report = new Report();
-			scanner.scanFile(file, model, rules, report);
-			//scanner.scanFile(file, model, rulesetPath, report);
+			//scanner.scanFile(file, model, rules, report);
+			//Added a comment
+			scanner.scanFile(file, model, path + rulesetPath, report);
 			
 			JavaApplicationModel.processMapData();
 			testRuleEngine();
