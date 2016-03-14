@@ -14,6 +14,18 @@
 			]]>
 		</example>
 	</rule>
+		<rule name="JavaScannerRule" message="Scans and finds out the technology" class="org.aes.core.scanner.rules.java.AESJavaScannerRule">
+		<description>
+
+		</description>
+		<priority>3</priority>
+		<example>
+		
+        <![CDATA[
+
+			]]>
+		</example>
+	</rule>
 	<rule name="DuplicateJspImportsRule" message="Scans and finds out the technology" class="org.aes.core.java.rules.DuplicateJspImportsRule">
 		<description>
 

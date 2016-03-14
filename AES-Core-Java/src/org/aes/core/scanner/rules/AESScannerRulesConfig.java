@@ -19,6 +19,14 @@ public class AESScannerRulesConfig {
 		return "AESScannerRulesConfig [scannerRules=" + scannerRules + "]";
 	}
 
+	public List<ScannerRule> getScannerRules() {
+		return scannerRules;
+	}
+
+	public void setScannerRules(List<ScannerRule> scannerRules) {
+		this.scannerRules = scannerRules;
+	}
+
 	@XmlElementWrapper( name="scannerRules" )
 	@XmlElement(name = "scannerRule")
 	private List<ScannerRule> scannerRules;
