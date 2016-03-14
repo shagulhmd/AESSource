@@ -18,6 +18,8 @@ import net.sourceforge.pmd.util.datasource.DataSource;
 import net.sourceforge.pmd.util.datasource.FileDataSource;
 
 import org.aes.core.java.test.AESTest;
+import org.aes.core.scanner.rules.AESScannerRulesConfig;
+import org.aes.metadata.root.AESMetaData;
 import org.aes.model.metadata.app.JavaApplicationModel;
 import org.aes.model.metadata.app.Model;
 import org.aes.model.metadata.report.ApplicationReport;
@@ -28,6 +30,18 @@ public class AESEngine {
 	
 	private String configPath;
 	private AESConfig configs;
+	private AESMetaData metData;
+	private final String MAIN_CONFIG = "//aes-config.xml";
+	private final String JAVA_SCANNER_CONFIG = "//java-scanner-rules.xml";
+	private AESScannerRulesConfig javaConfigs;
+
+	public AESMetaData getMetData() {
+		return metData;
+	}
+
+	public void setMetData(AESMetaData metData) {
+		this.metData = metData;
+	}
 
 	public String getConfigPath() {
 		return configPath;
@@ -39,12 +53,13 @@ public class AESEngine {
 	
 	public void init(String configPath){
 		this.configPath = configPath;
-		configs = new AESConfig();
+		//configs = new AESConfig();
 		loadConfigData();
+		loadJavaScannerConfigData();
 	}
 
 	private void loadConfigData() {
-		File configFile = new File(configPath);
+		File configFile = new File(configPath + MAIN_CONFIG);
 		if(!configFile.exists()){
 			System.out.println("ERROR: No config file exists");
 			return;
@@ -56,6 +71,27 @@ public class AESEngine {
 			
 			configs = (AESConfig) jaxbUnmarshaller.unmarshal(configFile);
 			System.out.println(configs.toString());
+			
+		}
+		catch(JAXBException ex){
+			System.out.println("ERROR: Error in processing config file - JAXBException");
+			ex.printStackTrace();
+		}	
+	}
+	
+	private void loadJavaScannerConfigData() {
+		File configFile = new File(configPath + JAVA_SCANNER_CONFIG);
+		if(!configFile.exists()){
+			System.out.println("ERROR: No scanner config file exists for Java, please check");
+			return;
+		}
+		
+		try{
+			JAXBContext jaxbContext = JAXBContext.newInstance(AESScannerRulesConfig.class);
+			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+			
+			javaConfigs = (AESScannerRulesConfig) jaxbUnmarshaller.unmarshal(configFile);
+			System.out.println(javaConfigs.toString());
 			
 		}
 		catch(JAXBException ex){
@@ -110,6 +146,12 @@ public class AESEngine {
 			}
 			
 			RuleContext ctx = new RuleContext();
+			//Set the metadata to the context
+			//so that it can be accessible in scan rules
+			ctx.setAttribute("AESDATA", metData);
+			//Set the java scanner rules to be used inside
+			//the scanner rule classes
+			ctx.setAttribute("JAVACONFIG", javaConfigs);
 			
 			if(configs.isMultiThreadEnabled()){
 				

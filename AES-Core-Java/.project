@@ -14,4 +14,11 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>PMD_SRC</name>
+			<type>2</type>
+			<location>D:/DART/Lab/Projects/Refs/PMD_SRC</location>
+		</link>
+	</linkedResources>
 </projectDescription>

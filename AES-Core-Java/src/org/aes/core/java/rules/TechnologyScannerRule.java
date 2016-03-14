@@ -1,5 +1,6 @@
 package org.aes.core.java.rules;
 
+
 import org.aes.model.metadata.app.JavaApplicationModel;
 
 import net.sourceforge.pmd.lang.java.ast.ASTClassOrInterfaceType;
@@ -17,6 +18,7 @@ public class TechnologyScannerRule extends AbstractJavaRule {
 	
 	@Override
 	public Object visit(ASTClassOrInterfaceType type, Object data){
+		
 		
 		if("Statement".equals(type.getImage()) && isHibernateSessionImported){
 			

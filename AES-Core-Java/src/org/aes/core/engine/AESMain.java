@@ -10,10 +10,8 @@ public class AESMain {
 	 */
 	public static void main(String as[]){
 		
-		String path = AESMain.class.getProtectionDomain().getCodeSource().getLocation().getFile();
-		AESEngine engine = new AESEngine();
-		engine.init(path + "//aes-config.xml");
-		engine.start();
+		AESUserSession session = new AESUserSession("DEFAULT", "DEF#12345", "SAMPLEPROJ", "SAMPLEPROJ#324234");
+		session.process();
 	}
 
 }

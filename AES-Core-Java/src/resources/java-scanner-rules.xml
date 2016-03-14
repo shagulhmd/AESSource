@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aesScannerRulesConfig>
+	<scannerRules>
+		<scannerRule name="DATALAYERCLASS" for="IMPORT">
+			<activeRule>true</activeRule>
+			<scanType>COMPARE</scanType>
+			<scanPatterns>
+				<scanPattern>java.sql.*</scanPattern>
+				<scanPattern>java.sql.*</scanPattern>
+				<scanPattern>java.sql.*</scanPattern>
+			</scanPatterns>
+		</scannerRule>
+		<scannerRule name="UILAYERCLASS" for="IMPORT">
+			<activeRule>true</activeRule>
+			<scanType>COMPARE</scanType>
+			<scanPatterns>
+				<scanPattern>java.sql.*</scanPattern>
+				<scanPattern>java.sql.*</scanPattern>
+				<scanPattern>java.sql.*</scanPattern>
+			</scanPatterns>
+		</scannerRule>
+		<scannerRule name="SAMPLECUSTOM" for="IMPORT">
+			<activeRule>true</activeRule>
+			<scanType>CUSTOM</scanType>
+			<scanPatterns></scanPatterns>
+		</scannerRule>
+	</scannerRules>
+</aesScannerRulesConfig>
