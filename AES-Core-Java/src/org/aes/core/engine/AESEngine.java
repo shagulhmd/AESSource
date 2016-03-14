@@ -17,8 +17,6 @@ import net.sourceforge.pmd.RuleSets;
 import net.sourceforge.pmd.util.datasource.DataSource;
 import net.sourceforge.pmd.util.datasource.FileDataSource;
 
-import org.aes.core.java.AESMonoThreadProcessor;
-import org.aes.core.java.AESMultiThreadProcessor;
 import org.aes.core.java.test.AESTest;
 import org.aes.model.metadata.app.JavaApplicationModel;
 import org.aes.model.metadata.app.Model;

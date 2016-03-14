@@ -20,6 +20,8 @@ import net.sourceforge.pmd.renderers.XMLRenderer;
 import net.sourceforge.pmd.util.datasource.DataSource;
 import net.sourceforge.pmd.util.datasource.FileDataSource;
 
+import org.aes.core.engine.AESMonoThreadProcessor;
+import org.aes.core.engine.AESMultiThreadProcessor;
 import org.aes.model.metadata.app.JavaApplicationModel;
 
 public class AESJavaScanner {

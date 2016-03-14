@@ -6,5 +6,6 @@
 	<ignoreFileExts>
 		<ext>class</ext>
 		<ext>js</ext>
+		<ext>properties</ext>
 	</ignoreFileExts>
 </aesConfig>
