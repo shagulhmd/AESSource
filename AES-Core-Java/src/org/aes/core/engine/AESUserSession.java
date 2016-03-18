@@ -48,7 +48,7 @@ public class AESUserSession {
 		String path = AESUserSession.class.getProtectionDomain().getCodeSource().getLocation().getFile();
 		AESEngine engine = new AESEngine();
 		engine.init(path);
-		engine.setMetData(aesMetaData);
+		engine.setMetaData(aesMetaData);
 		engine.start();
 	}
 	

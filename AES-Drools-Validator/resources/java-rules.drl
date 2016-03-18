@@ -1,10 +1,24 @@
 import org.aes.model.metadata.app.Model;
 import org.aes.model.metadata.report.ApplicationReport;
+import org.aes.metadata.root.AESMetaData;
+import org.aes.metadata.root.ClassMetaData;
+import org.aes.metadata.classes.FoundMetaData;
+import java.util.Map;  
+import java.util.Map.Entry;  
+import java.util.HashMap; 
 
-rule "Sample Hibernate Rule"
+
+
+rule "Architecture Rule 1"
 when
-	model:Model (technologyModel.primaryDAO == "Hibernate")
 	report:ApplicationReport()
+	metaData:AESMetaData($classMetaData : classMetaDatas)
+	entry:Entry() from $classMetaData.entrySet()
+	value : ClassMetaData($foundMetaDatas : foundMetaDatas) from entry.getValue()
+	foundEntry1: Entry() from $foundMetaDatas.entrySet()
+	foundEntry2: Entry() from $foundMetaDatas.entrySet()
+	Boolean(booleanValue == true) from foundEntry1.getKey() == "DATALAYERCLASS" and
+	Boolean(booleanValue == true) from foundEntry2.getKey() == "UILAYERCLASS"
 then
-	report.addResult("Primary DAO Technology is Hibernate");
-end	
+	report.addResult("SameClass has been used in data layer and ui layer:" + value.getClassKey());	
+end;	

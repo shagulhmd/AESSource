@@ -30,7 +30,6 @@ public final class AESMonoThreadProcessor extends AbstractPMDProcessor {
 
 		// single threaded execution
 
-		//RuleSets rs = createRuleSets(ruleSetFactory);
 		SourceCodeProcessor processor = new SourceCodeProcessor(configuration);
 		
 		for (DataSource dataSource : files) {
@@ -42,10 +41,6 @@ public final class AESMonoThreadProcessor extends AbstractPMDProcessor {
 				LOG.fine("Processing " + ctx.getSourceCodeFilename());
 			}
 			rs.start(ctx);
-
-//			for (Renderer r : renderers) {
-//				r.startFileAnalysis(dataSource);
-//			}
 
 			try {
 				InputStream stream = new BufferedInputStream(dataSource.getInputStream());
@@ -66,7 +61,6 @@ public final class AESMonoThreadProcessor extends AbstractPMDProcessor {
 			}
 
 			rs.end(ctx);
-//			super.renderReports(renderers, ctx.getReport());
 		}
 	}
 

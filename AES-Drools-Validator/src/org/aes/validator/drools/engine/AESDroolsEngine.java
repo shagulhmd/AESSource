@@ -12,11 +12,29 @@ import org.drools.compiler.DroolsError;
 import org.drools.compiler.DroolsParserException;
 import org.drools.compiler.PackageBuilder;
 import org.drools.compiler.PackageBuilderErrors;
+import org.aes.metadata.root.AESMetaData;
 import org.aes.model.metadata.report.ApplicationReport;
 import org.aes.model.metadata.app.Model;
 
 public class AESDroolsEngine {
 	
+	
+	public void triggerAESValidationRules(AESMetaData appModel, ApplicationReport report)  {
+		
+		try{
+			RuleBase ruleBase = initDrools();
+			WorkingMemory workingMemory = initializeObjects(ruleBase, appModel, report);
+			workingMemory.fireAllRules();
+		}
+		catch(DroolsParserException ex2){
+			//TODO Log
+			System.out.println("Drools Exception: " + ex2.getMessage());
+		}
+		catch(IOException ex){
+			//TODO Log
+			System.out.println("IOException: " + ex.getMessage());
+		}
+	}
 	
 	public void triggerJavaRules(Model appModel, ApplicationReport report)  {
 		
@@ -37,6 +55,15 @@ public class AESDroolsEngine {
 	
 	private WorkingMemory initializeObjects(RuleBase ruleBase,
 			Model appModel, ApplicationReport report) {
+		WorkingMemory workingMemory = ruleBase.newStatefulSession();
+		workingMemory.insert(appModel);
+		workingMemory.insert(report);
+		
+		return workingMemory;
+	}
+	
+	private WorkingMemory initializeObjects(RuleBase ruleBase,
+			AESMetaData appModel, ApplicationReport report) {
 		WorkingMemory workingMemory = ruleBase.newStatefulSession();
 		workingMemory.insert(appModel);
 		workingMemory.insert(report);

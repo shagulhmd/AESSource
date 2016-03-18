@@ -2,24 +2,25 @@
 <aesScannerRulesConfig>
 	<scannerRules>
 		<scannerRule name="DATALAYERCLASS" for="IMPORT">
+			<ruleDesc>This rule identifies whether the following patterns are found in the import statements</ruleDesc>
 			<activeRule>true</activeRule>
 			<scanType>COMPARE</scanType>
 			<scanPatterns>
 				<scanPattern>java.sql.*</scanPattern>
-				<scanPattern>java.sql.*</scanPattern>
-				<scanPattern>java.sql.*</scanPattern>
+				<scanPattern>javax.sql.*</scanPattern>
+				<scanPattern>javax.jpa.*</scanPattern>
 			</scanPatterns>
 		</scannerRule>
 		<scannerRule name="UILAYERCLASS" for="IMPORT">
+			<ruleDesc>This rule identifies whether the following patterns are found in the import statements</ruleDesc>
 			<activeRule>true</activeRule>
 			<scanType>COMPARE</scanType>
 			<scanPatterns>
-				<scanPattern>java.sql.*</scanPattern>
-				<scanPattern>java.sql.*</scanPattern>
-				<scanPattern>java.sql.*</scanPattern>
+				<scanPattern>org.spring.mvc.*</scanPattern>
 			</scanPatterns>
 		</scannerRule>
 		<scannerRule name="SAMPLECUSTOM" for="IMPORT">
+			<ruleDesc>This is a sample custom rule for testing</ruleDesc>
 			<activeRule>true</activeRule>
 			<scanType>CUSTOM</scanType>
 			<scanPatterns></scanPatterns>

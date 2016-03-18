@@ -4,16 +4,50 @@ import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 
 @XmlAccessorType (XmlAccessType.FIELD)
 public class ScannerRule {
 
+	@XmlAttribute(name="name")
+	private String name;
+	
+	@XmlAttribute(name="for")
+	private String forType;
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getForType() {
+		return forType;
+	}
+
+	public void setForType(String forType) {
+		this.forType = forType;
+	}
+
+	@XmlElement(name="ruleDesc")
+	private String ruleDesc;
+	
+	public String getRuleDesc() {
+		return ruleDesc;
+	}
+
+	public void setRuleDesc(String ruleDesc) {
+		this.ruleDesc = ruleDesc;
+	}
+
 	@XmlElement(name="activeRule")
 	private boolean activeRule;
 
-	public boolean getActiveRule() {
+	public boolean isActiveRule() {
 		return activeRule;
 	}
 
@@ -26,8 +60,10 @@ public class ScannerRule {
 	
 	@Override
 	public String toString() {
-		return "ScannerRule [scanType=" + scanType + ", scanPatterns="
-				+ scanPatterns + "]";
+		return "ScannerRule [name=" + name + ", forType=" + forType
+				+ ", ruleDesc=" + ruleDesc + ", activeRule=" + activeRule
+				+ ", scanType=" + scanType + ", scanPatterns=" + scanPatterns
+				+ "]";
 	}
 
 	public String getScanType() {

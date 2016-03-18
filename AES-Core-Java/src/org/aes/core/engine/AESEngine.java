@@ -20,8 +20,6 @@ import net.sourceforge.pmd.util.datasource.FileDataSource;
 import org.aes.core.java.test.AESTest;
 import org.aes.core.scanner.rules.AESScannerRulesConfig;
 import org.aes.metadata.root.AESMetaData;
-import org.aes.model.metadata.app.JavaApplicationModel;
-import org.aes.model.metadata.app.Model;
 import org.aes.model.metadata.report.ApplicationReport;
 import org.aes.validator.drools.engine.AESDroolsEngine;
 
@@ -30,17 +28,17 @@ public class AESEngine {
 	
 	private String configPath;
 	private AESConfig configs;
-	private AESMetaData metData;
+	private AESMetaData metaData;
 	private final String MAIN_CONFIG = "//aes-config.xml";
 	private final String JAVA_SCANNER_CONFIG = "//java-scanner-rules.xml";
 	private AESScannerRulesConfig javaConfigs;
 
-	public AESMetaData getMetData() {
-		return metData;
+	public AESMetaData getMetaData() {
+		return metaData;
 	}
 
-	public void setMetData(AESMetaData metData) {
-		this.metData = metData;
+	public void setMetaData(AESMetaData metData) {
+		this.metaData = metData;
 	}
 
 	public String getConfigPath() {
@@ -53,7 +51,6 @@ public class AESEngine {
 	
 	public void init(String configPath){
 		this.configPath = configPath;
-		//configs = new AESConfig();
 		loadConfigData();
 		loadJavaScannerConfigData();
 	}
@@ -127,8 +124,7 @@ public class AESEngine {
 			
 			processFiles(sourceFiles, rulesPath);
 			
-			JavaApplicationModel.processMapData();
-			testRuleEngine();
+			validateAESRules(metaData);
 		}
 		catch(Exception ex3){
 			ex3.printStackTrace();
@@ -148,7 +144,8 @@ public class AESEngine {
 			RuleContext ctx = new RuleContext();
 			//Set the metadata to the context
 			//so that it can be accessible in scan rules
-			ctx.setAttribute("AESDATA", metData);
+			metaData = new AESMetaData();
+			ctx.setAttribute("AESDATA", metaData);
 			//Set the java scanner rules to be used inside
 			//the scanner rule classes
 			ctx.setAttribute("JAVACONFIG", javaConfigs);
@@ -190,16 +187,15 @@ public class AESEngine {
 	}
 	
 	
-	public static void testRuleEngine(){
+	public static void validateAESRules(AESMetaData metaData){
 		
-		Model model = JavaApplicationModel.getModel();
 		
 		ApplicationReport report = new ApplicationReport();
 		AESDroolsEngine engine = new AESDroolsEngine();
 		try{
-			engine.triggerJavaRules(model, report);
+			engine.triggerAESValidationRules(metaData, report);
 			ArrayList<String> aList = report.getResult();
-			System.out.println(aList.toString());
+			System.out.println("RESULTS:" + aList.toString());
 		}
 		catch(Exception e){
 			System.out.println("Unknown Error");

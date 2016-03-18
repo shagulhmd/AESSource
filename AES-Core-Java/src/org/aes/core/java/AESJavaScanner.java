@@ -1,13 +1,9 @@
 package org.aes.core.java;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sourceforge.pmd.PMD;
 import net.sourceforge.pmd.PMDConfiguration;
 import net.sourceforge.pmd.PMDException;
 import net.sourceforge.pmd.Report;
@@ -15,8 +11,6 @@ import net.sourceforge.pmd.RuleContext;
 import net.sourceforge.pmd.RuleSet;
 import net.sourceforge.pmd.RuleSetFactory;
 import net.sourceforge.pmd.RuleSets;
-import net.sourceforge.pmd.cpd.Renderer;
-import net.sourceforge.pmd.renderers.XMLRenderer;
 import net.sourceforge.pmd.util.datasource.DataSource;
 import net.sourceforge.pmd.util.datasource.FileDataSource;
 
@@ -91,7 +85,6 @@ public class AESJavaScanner {
 	
 	
 	private void scanFileWithRules(List<DataSource> files, RuleSet ruleset, RuleContext context, Report report, JavaApplicationModel model) throws PMDException{
-		PMD p = new PMD();
 		PMDConfiguration config = new PMDConfiguration();
 		AESMonoThreadProcessor processor = new AESMonoThreadProcessor(config);
 		//context.setReport(report);
@@ -101,7 +94,6 @@ public class AESJavaScanner {
 	}
 	
 	private void scanFileWithRules(List<DataSource> files, String ruleset, RuleContext context) throws PMDException{
-		PMD p = new PMD();
 		PMDConfiguration config = new PMDConfiguration();
 		config.setRuleSets(ruleset);
 		AESMultiThreadProcessor processor = new AESMultiThreadProcessor(config);
