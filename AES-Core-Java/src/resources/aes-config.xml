@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aesConfig>
 	<sourceFilePath>D:\CASWeb\src\com\metlife\middleware\service</sourceFilePath>
+	<dbHost>localhost</dbHost>
+	<dbPort>27017</dbPort>
+	<dbName>aesdb</dbName>
 	<scannerRulesPath>//scanner-ruleset.xml</scannerRulesPath>
 	<multiThreadEnabled>true</multiThreadEnabled>
 	<ignoreFileExts>

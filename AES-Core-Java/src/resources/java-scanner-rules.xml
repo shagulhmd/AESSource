@@ -25,5 +25,41 @@
 			<scanType>CUSTOM</scanType>
 			<scanPatterns></scanPatterns>
 		</scannerRule>
+		<scannerRule name="DATALAYERCLASS" for="PACKAGE">
+			<ruleDesc>This rule identifies whether the following patterns are found in the package statements</ruleDesc>
+			<activeRule>true</activeRule>
+			<scanType>COMPARE</scanType>
+			<scanPatterns>
+				<scanPattern>*.data.*</scanPattern>
+				<scanPattern>*.dao.*</scanPattern>
+				<scanPattern>*.db.*</scanPattern>
+			</scanPatterns>
+		</scannerRule>
+		<scannerRule name="UILAYERCLASS" for="PACKAGE">
+			<ruleDesc>This rule identifies whether the following patterns are found in the package statements</ruleDesc>
+			<activeRule>true</activeRule>
+			<scanType>COMPARE</scanType>
+			<scanPatterns>
+				<scanPattern>*.ui.*</scanPattern>
+			</scanPatterns>
+		</scannerRule>
+		<scannerRule name="BUSINESSLAYERCLASS" for="PACKAGE">
+			<ruleDesc>This rule identifies whether the following patterns are found in the package statements</ruleDesc>
+			<activeRule>true</activeRule>
+			<scanType>COMPARE</scanType>
+			<scanPatterns>
+				<scanPattern>*.business.*</scanPattern>
+				<scanPattern>*.biz.*</scanPattern>
+			</scanPatterns>
+		</scannerRule>
+		<scannerRule name="UTILITYLAYERCLASS" for="PACKAGE">
+			<ruleDesc>This rule identifies whether the following patterns are found in the package statements</ruleDesc>
+			<activeRule>true</activeRule>
+			<scanType>COMPARE</scanType>
+			<scanPatterns>
+				<scanPattern>*.util.*</scanPattern>
+				<scanPattern>*.utility.*</scanPattern>
+			</scanPatterns>
+		</scannerRule>
 	</scannerRules>
 </aesScannerRulesConfig>

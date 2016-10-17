@@ -7,6 +7,7 @@ import net.sourceforge.pmd.RuleContext;
 import net.sourceforge.pmd.lang.java.ast.ASTClassOrInterfaceDeclaration;
 import net.sourceforge.pmd.lang.java.ast.ASTCompilationUnit;
 import net.sourceforge.pmd.lang.java.ast.ASTImportDeclaration;
+import net.sourceforge.pmd.lang.java.ast.ASTMethodDeclaration;
 import net.sourceforge.pmd.lang.java.ast.ASTPackageDeclaration;
 import net.sourceforge.pmd.lang.java.rule.AbstractJavaRule;
 
@@ -32,6 +33,7 @@ public class AESJavaScannerRule extends AbstractJavaRule {
 		RuleContext ctx = (RuleContext) data;
 		metaData = (AESMetaData) ctx.getAttribute("AESDATA");
 		javaconfig = (AESScannerRulesConfig) ctx.getAttribute("JAVACONFIG");
+		classMetaData.setApplicationCode((String) ctx.getAttribute("APPCODE"));
 		
 		if(javaconfig != null){
 			scanRules = javaconfig.getScannerRules();
@@ -55,8 +57,11 @@ public class AESJavaScannerRule extends AbstractJavaRule {
 		{
 			classMetaData.setPackageName("default");
 		}
+		
+		AESJavaPackageScannerRule.process(node, data, metaData, classMetaData, scanRules);
 
 		return super.visit(node, data);
+		
 	}
 	
 	
@@ -77,8 +82,19 @@ public class AESJavaScannerRule extends AbstractJavaRule {
 	public Object visit(ASTImportDeclaration node, Object data) {
 		
 		importStmts.add(node.getImportedName());
-
+		classMetaData.addImport(node.getImportedName());
+		
 		AESJavaImportScannerRule.process(node, data, metaData, classMetaData, scanRules);
+		
+		return super.visit(node, data);
+	}
+	
+	@Override
+	public Object visit(ASTMethodDeclaration node, Object data) {
+		
+		classMetaData.addImport(node.getMethodName());
+		
+		AESJavaMethodScannerRule.process(node, data, metaData, classMetaData, scanRules);
 		
 		return super.visit(node, data);
 	}

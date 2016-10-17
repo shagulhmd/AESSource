@@ -124,11 +124,22 @@ public class AESEngine {
 			
 			processFiles(sourceFiles, rulesPath);
 			
+			storeMetaData(metaData);
+			
 			validateAESRules(metaData);
 		}
 		catch(Exception ex3){
 			ex3.printStackTrace();
 		}
+	}
+
+	private void storeMetaData(AESMetaData mData) {
+
+		//TO DO:
+		//Store all metadata values into MongoDB
+		AESDataBatch batch = new AESDataBatch();
+		batch.runBatch(mData);
+		
 	}
 
 	private void processFiles(List<File> sourceFiles, String rulesPath) {
